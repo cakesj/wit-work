@@ -1,30 +1,12 @@
-from operator import le
 from shutil import copyfile, rmtree
 import matplotlib.pyplot as plt 
 import networkx as graph_maker
-from datetime import time
 from typing import List
 from PIL import Image
 import datetime
 import random
 import sys
 import os
-from networkx.algorithms.centrality import reaching
-
-from networkx.generators.small import heawood_graph
-
-
-
-class WitNotFoundError(Exception):
-    pass
-
-class FileNotEcceptableError(Exception):
-    pass
-
-class NameNotValid(Exception):
-    pass
-
-
 
 def Isthereperent(fun):
     "\t\tfor a file, chacks if it has the .wit program inside it, if not, raises WitNotFoundError"
@@ -41,8 +23,15 @@ def Isthereperent(fun):
             raise WitNotFoundError("you havn't installed wit yet in any of the parenting files")
         return fun(TOwhere ,*args, **kwargs) # remember to put "place at any decorated function to get "TOwhere"
     return wrapper
+    
+class WitNotFoundError(Exception):
+    pass
 
+class FileNotEcceptableError(Exception):
+    pass
 
+class NameNotValid(Exception):
+    pass
 
 class Wit:
 
@@ -57,7 +46,6 @@ class Wit:
             TXT.write(f"|HEAD=None\n|master(active)=None")
 
 
-# python C:\Users\Ronen\Desktop\programing\wit.py
 
     def _HEAD_HUNTER(self, PLACE: str, branch: str="HEAD"):
         '''\t\tfinds the most reacent file inside the file "images", out of a certin branch
@@ -133,7 +121,6 @@ class Wit:
 
 
 
-#  python C:\Users\Ronen\Desktop\programing\wit.py
     @Isthereperent
     def commit(place: str, self, MESSEGE: str, branch: str='HEAD', jenus: str='') -> None:
         """\t\tcopies the files from staging area to a memmory of the files, from which .wit works
@@ -399,11 +386,9 @@ class Wit:
                         base = side1_list[legacy]
                         base_score = Legacy + legacy
         return '/'.join(base.split('/')[:-1])
-
-
-
-# python C:\Users\Ronen\Desktop\programing\wit.py
-
+                         
+                         
+                         
     @Isthereperent
     def merge(place: str, self, branch_name: str):
         branch_2 = f'{place}/images/{self._HEAD_HUNTER(place)}/{self._HEAD_HUNTER(place)}.txt'
@@ -448,27 +433,5 @@ class Wit:
 
 #input('bfv_________')
 
-# python C:\Users\Ronen\Desktop\programing\wit.py
 
 wheat = Wit()
-wheat.init('C:/Users/Ronen/Desktop')
-wheat.add('C:/Users/Ronen/Desktop/log.txt')
-wheat.commit("a")
-input()
-wheat.chackout()
-
-
-
-'''wheat.init('C:/Users/Ronen/Desktop')
-wheat.branch('abastos')
-wheat.add('C:/Users/Ronen/Desktop/log.txt')
-input()
-wheat.commit('a')
-wheat.deactivate_branch('abastos')
-wheat.add('C:/Users/Ronen/Desktop/log.txt')
-wheat.add('C:/Users/Ronen/Desktop/stronk/tip.png')
-input()
-wheat.commit('a')
-wheat.merge('abastos')
-wheat.chackout()
-'''
